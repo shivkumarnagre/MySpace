@@ -34,7 +34,6 @@ C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\bin\Debug\ne
 C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\bin\Debug\net5.0\MySpace.Models.dll
 C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\bin\Debug\net5.0\ref\MySpace.Models.dll
 C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\bin\Debug\net5.0\MySpace.Models.pdb
-C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.AssemblyReference.cache
 C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\obj\Debug\net5.0\MySpace.Models.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfoInputs.cache
 C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfo.cs

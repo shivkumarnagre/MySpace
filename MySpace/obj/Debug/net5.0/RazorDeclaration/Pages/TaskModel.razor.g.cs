@@ -13,84 +13,84 @@ namespace MySpace.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 1 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 2 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 3 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 4 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 5 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 6 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 7 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 8 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 9 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using MySpace;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 10 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using MySpace.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\_Imports.razor"
+#line 11 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\Pages\TaskModel.razor"
+#line 2 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\Pages\TaskModel.razor"
 using MySpace.Models;
 
 #line default
@@ -104,30 +104,63 @@ using MySpace.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "C:\Users\Shiv\OneDrive\Desktop\New folder\MySpace\MySpace\Pages\TaskModel.razor"
+#line 92 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\Pages\TaskModel.razor"
        
-    public Guid Guid = Guid.NewGuid();
-    public string ModalDisplay = "none;";
-    public string ModalClass = "";
-    public bool ShowBackdrop = false;
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
-    public void Open()
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog.Cancel();
+    public string TextValue { get; set; }
+
+
+    
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 106 "C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace_v3.0\MySpace\Pages\TaskModel.razor"
+           
+
+    public class TodoItem { public string? Title { get; set; } }
+    private List<TodoItem> todos = new();
+    private string InputValue { get; set; }
+    private string err { get; set; }
+
+    public bool IsValidEmail(string email)
     {
-        ModalDisplay = "block;";
-        ModalClass = "Show";
-        ShowBackdrop = true;
-        StateHasChanged();
+        if (email.Trim().EndsWith("."))
+        {
+            return false; // suggested by @TK-421
+        }
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
-    public void Close()
+    public void Enter(KeyboardEventArgs e)
     {
-        ModalDisplay = "none";
-        ModalClass = "";
-        ShowBackdrop = false;
-        StateHasChanged();
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            if (IsValidEmail(InputValue))
+            {
+                todos.Add(new TodoItem { Title = InputValue });
+                err = string.Empty;
+                InputValue = string.Empty;
+            }
+            else
+            {
+                err = "Not Valid";
+            }
+        }
     }
 
-    private List<MySpace.Models.PrsnlSpace> users = new();
 
 #line default
 #line hidden
