@@ -6072,11 +6072,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_v3.0\\MySpace.Models\\MySpace.Models.csproj",
+      "projectUniqueName": "C:\\Users\\Shiv\\OneDrive\\Desktop\\New folder\\MySpace\\MySpace.Models\\MySpace.Models.csproj",
       "projectName": "MySpace.Models",
-      "projectPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_v3.0\\MySpace.Models\\MySpace.Models.csproj",
+      "projectPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\New folder\\MySpace\\MySpace.Models\\MySpace.Models.csproj",
       "packagesPath": "C:\\Users\\Shiv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_v3.0\\MySpace.Models\\obj\\",
+      "outputPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\New folder\\MySpace\\MySpace.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Shiv\\AppData\\Roaming\\NuGet\\NuGet.Config",
