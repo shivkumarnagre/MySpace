@@ -1,0 +1,263 @@
+﻿@page "/"
+@*@inherits MySpace.Shared.NavMenu*@
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@inject IDialogService DialogService;
+@inject IJSRuntime JsRuntime
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@inherits MainLayout
+
+
+<MudNavMenu xs="12" sm="12" md="12" Elevation="4" Style=" width: 70px; position: fixed; overflow: visible; background-color: aqua;  z-index: 1; top: 0; left: 0; bottom:0; ">
+    <MudIconButton Icon="@Icons.Material.Outlined.People" Color="Color.Inherit" Edge="Edge.End" OnClick="@(() => ToggleDrawer())" /><br />
+    <MudIconButton Icon="@Icons.Material.Outlined.Workspaces" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="@Icons.Material.Filled.List" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="@Icons.Material.Outlined.InsertDriveFile" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Style="margin-top:410%;" Icon="@Icons.Material.Filled.History" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="@Icons.Material.Outlined.Notifications" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="fas fa-question" Color="Color.Inherit" Edge="Edge.End" /><br />
+</MudNavMenu>
+
+<MudDrawer Style="position: fixed; padding-top: 20px; top:0; height:100%;  background-color: #F8F8F8;" ClipMode="@DrawerClipMode.Always" Variant="@DrawerVariant.Temporary" Anchor="Anchor.Start" @bind-Open="@open" DisableOverlay="true" Elevation="1">
+    <MudDrawerHeader>
+        <MudText Style="margin-top: -30px; font-size:15px; font-weight:bold; margin-left: -20px;">Spaces</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu Style="position:relative; height:100vh">
+        <MudItem Style="margin-top:-95px; padding-bottom:20px;" xs="12" sm="12" md="12">
+            <MudTextField @bind-Value="Search" Variant="Variant.Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Inherit" />
+        </MudItem>
+        <MudIcon Style="transform: rotate(30deg);" Size="Size.Small" Icon="@Icons.Material.Filled.PushPin" Title="Pin" />
+        <h6 style="margin-top:-20px; font-weight:bold; margin-left:35px;">Pinned</h6>
+
+        @if (pinUsers != null && pinUsers.Any())
+        {
+            <div class="d-flex">
+                @foreach (var user in pinUsers)
+                {
+                    <MudTooltip Text="Unpin" Color="Color.Tertiary" Placement="Placement.Bottom" Arrow="true">
+                        <MudItem Style="background-color: #FFFFFF; border-radius: 4px; width: 60px; padding: 10px;" Class="mr-2">
+                            <MudAvatar Size="Size.Medium" Style="font-size:15px;" Color="Color.Primary" Variant="Variant.Filled" @onclick="() => addUnPinnUser(user)">@user[0]</MudAvatar>
+                            <MudText Style="font-size: 13px; text-overflow: ellipsis;">@user</MudText>
+                        </MudItem>
+                    </MudTooltip>
+
+                }
+            </div>
+        }
+
+        else
+        {
+            <div class="m-2">No Users pinned</div>
+        }
+
+
+
+
+
+
+        <MudItem xs="12" sm="12" md="12">
+            <MudSelect Style="  background-color: #FFFFFF; padding:10px" T="string" Label="All Spaces" Strict="true" @bind-Value="stringValue" Variant="Variant.Outlined" IconSize="Size.Small" Adornment="Adornment.Start" AdornmentIcon="@Icons.Custom.Uncategorized.FolderOpen" OffsetY="true">
+                <MudSelectItem Value="@("Shivkumar Nagre")" />
+                <MudSelectItem Value="@("Bill Gates")">Bill Gates</MudSelectItem>
+                <MudSelectItem Value="@("Elon Musk")">Elon Musk</MudSelectItem>
+                <MudSelectItem Value="@("Tony Stark")">Tony Stark</MudSelectItem>
+                <MudSelectItem Value="@("Sundar Pichai")">Sundar Pichai</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        @foreach (var user in users)
+        {
+
+            <MudTooltip Text="Pin" Color="Color.Tertiary" Placement="Placement.Right" Arrow="true">
+
+                <div class="d-flex mt-3 ml-1 border-top pt-2" @onclick="() => addPinnUser(user)" style="cursor:pointer">
+                    <div><MudAvatar Color="Color.Primary">@user[0] </MudAvatar></div>
+
+                    <div class="d-flex flex-column mx-2 flex-grow-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong>@user</strong>
+                            <div>6:30pm</div>
+                        </div>
+
+                        <div>This is random text</div>
+                    </div>
+
+
+                </div>
+                </MudTooltip>
+                }
+
+                <MudCard Style="position : absolute; bottom : 0" Class="mx-3">
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText>Create next space</MudText>
+                        </CardHeaderContent>
+                        <CardHeaderActions>
+
+
+
+
+
+                            <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.AddCircle" Color="Color.Primary" @onclick="OpenDialog" />
+                        </CardHeaderActions>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudText>Pick a template</MudText>
+                        <MudText Typo="Typo.body2">or Create 1:1 Space</MudText>
+                    </MudCardContent>
+                </MudCard>
+
+        </MudNavMenu>
+
+
+
+</MudDrawer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<MudAvatar Size="Size.Large" Style="font-size:22px; margin-top: 100px;  margin-left:50%;" Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+<h5 style="margin-left:46%; padding-top:4px;">@(stringValue ?? "Your Space!")</h5>
+<h6 style="margin-left:200px;"> This is your personal space for any tasks, notes and files that you want to keep to yourself. Antything added here is not shared with anyone else.</h6>
+<MudItem xs="12" sm="12" md="12">
+    <MudFab DisableElevation="true" Size="0" Icon="@Icons.Material.Filled.List" Style="color: blue; margin-top:20px; margin-left:560px; border: 1px solid #DBE4E1; border-radius: 4px; background-color: #FBFCFC; " Label="Tasks" />
+    <MudFab DisableElevation="true" Size="0" Icon="@Icons.Material.Outlined.InsertDriveFile" Style="color: blue; margin-top:20px; border: 1px solid #DBE4E1;border-radius: 4px; background-color: #FBFCFC; " Label="Notes" />
+    <MudFab DisableElevation="true" Size="0" Icon="@Icons.Material.Filled.FolderOpen" Style="color: blue; margin-top:20px; border: 1px solid #DBE4E1;   background-color: #FBFCFC; border-radius: 4px; " Label="Files" />
+</MudItem>
+<br />
+<br />
+<br />
+<MudDivider Style="width:500px;margin-left:150px;" DividerType="DividerType.Middle" Class="my-6" />
+<p style="margin-left:670px; margin-top:-33px;">Oct 17th</p>
+<MudDivider Style="width:500px; margin-left:750px; margin-top:-30px;" DividerType="DividerType.Middle" />
+
+
+<MudText style="margin-left: 150px; padding: 30px;" Align="Align.Center">Rock created the space for <span style="color:blue;">@(stringValue ?? "Your Space!")</span> •<span style="color:blue;">@(stringValue ?? "Your Space!")</span> added <span style="color:blue;">Task:1</span> in To Do for @(stringValue ?? "Your Space!") •<span style="color:blue;">@(stringValue ?? "Your Space!")</span> added <span style="color:blue;">Task:2</span> in To Do for <span style="color:blue;">@(stringValue ?? "Your Space!")</span> •<span style="color:blue;">@(stringValue ?? "Your Space!")</span> added <span style="color:blue;">Task:3</span> in To Do for <span style="color:blue;">@(stringValue ?? "Your Space!")</span></MudText>
+<MudItem xs="12" sm="12" md="12" Style="margin-left: 90px; margin-right: 30px; bottom: 0; margin-top: 260px;">
+    <MudTextField @bind-Value="@normalText"
+                  Label="Write a message"
+                  Variant="Variant.Outlined"
+                  Adornment="Adornment.End"
+                  AdornmentColor="Color.Primary"
+                  AdornmentIcon="@Icons.Filled.KeyboardVoice" />
+</MudItem>
+<MudItem xs="12" sm="12" md="12" Style="bottom:0;">
+    <MudIconButton Style="margin-left:75px;" Icon="@Icons.Material.Filled.InsertEmoticon" aria-label="delete"></MudIconButton>
+    <MudIconButton Icon="@Icons.Material.Outlined.AlternateEmail" aria-label="delete"></MudIconButton>
+    <MudIconButton Icon="@Icons.Material.Filled.AttachFile" aria-label="delete"></MudIconButton>
+    <MudIconButton Icon="@Icons.Material.Filled.BarChart" aria-label="delete"></MudIconButton>
+    <MudFab DisableElevation="true" Size="0" Icon="@Icons.Material.Outlined.AddCircleOutline" Style=" border: 1px solid #DBE4E1; border-radius: 4px; background-color: #FBFCFC; " Label="Task" />
+    <MudFab DisableElevation="true" Size="0" Icon="@Icons.Material.Outlined.AddCircleOutline" Style=" border: 1px solid #DBE4E1;border-radius: 4px; background-color: #FBFCFC; " Label="Note" />
+    <MudFab DisableElevation="true" Size="0" Icon="@Icons.Material.Outlined.Videocam" Style=" border: 1px solid #DBE4E1;border-radius: 4px; background-color: #FBFCFC; " Label="Start meeting" />
+</MudItem>
+
+
+
+
+
+
+
+
+
+
+
+
+@code{
+
+    string normalText;
+
+
+
+
+    bool open = false;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+
+    public string Search { get; set; }
+    public string stringValue { get; set; }
+
+
+
+
+    private void OpenDialog()
+    {
+        DialogService.Show<MySpace.Shared.Component.TempDialog>("Create Space");
+    }
+    public List<string> users = new List<string> { "Sonal", "Ajay", "Ruman" };
+    public List<string> pinUsers = new List<string>();
+    public async void addPinnUser(string value)
+    {
+
+        if (!pinUsers.Exists(x => x == value))
+            pinUsers.Add(value);
+        else
+            await JsRuntime.InvokeVoidAsync("alert", value + " is already Pinned");
+    }
+
+    public void addUnPinnUser(string value)
+    {
+        pinUsers.Remove(value);
+    }
+
+
+}

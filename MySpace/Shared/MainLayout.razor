@@ -1,0 +1,39 @@
+﻿@inherits LayoutComponentBase
+@using MySpace.Models
+@using MySpace.Pages
+<MudThemeProvider />
+<MudDialogProvider
+    FullWidth="true"
+    CloseButton="true"   
+    />
+
+<MudLayout>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+<NavMenu />
+
+
+
+<MudAppBar xs="12" sm="12" md="12" Elevation="1" Style="margin-left: 70px; overflow:visible; background-color: #FBFCFC; " Fixed="true">
+
+    <MudAvatar Style="margin-top: -8px; " Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+    <h6 style="color:black; margin-left:5px; margin-bottom:24px; ">@(stringValue ?? "Your Space!")</h6>
+
+
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Filled.SupervisorAccount" Size="Size.Small" Style="position: relative; padding: 5px; margin-top:28px; margin-left:-90px; color: blue;  border-right: 2px solid #DBE4E1; font-size: small; height: 22px; border-radius: 0; background-color: #FBFCFC;"  />
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Filled.List" Style="color: blue; border-right: 2px solid #DBE4E1; padding: 15px; margin-top: 30px; font-size: small; height: 22px; border-radius: 0; background-color: #FBFCFC; " Label="Tasks" />
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.InsertDriveFile" Style="color: blue; border-right: 2px solid #DBE4E1; padding: 15px; margin-top: 30px; height: 22px; font-size: small; border-radius: 0; background-color: #FBFCFC; " Label="Notes" />
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.FolderOpen" Style="color: blue;  padding: 15px; margin-top: 30px; background-color: #FBFCFC; height: 22px; font-size: small; border-radius: 0; " Label="Files" />
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.Search" Style="color: black; background-color:#FBFCFC; margin-left: 33em; " Edge="Edge.End" Label="Search Space" />
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.FilterList" Style="color: black; background-color: #FBFCFC;" Label="Activity" />
+    <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.Info" Style="color: black; background-color: #FBFCFC;" Label="Details" />
+
+</MudAppBar>
+
+
+@code {
+    public string stringValue { get; set; }
+
+}

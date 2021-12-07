@@ -1,0 +1,103 @@
+﻿@*@inherits MainLayout
+
+
+    <MudNavMenu xs="12" sm="12" md="12" Elevation="4" Style=" width: 70px; position: fixed; overflow: visible; background-color: aqua;  z-index: 1; top: 0; left: 0; bottom:0; ">
+        <MudIconButton Icon="@Icons.Material.Outlined.People" Color="Color.Inherit" Edge="Edge.End" OnClick="@(() => ToggleDrawer())" /><br />
+        <MudIconButton Icon="@Icons.Material.Outlined.Workspaces" Color="Color.Inherit" Edge="Edge.End" /><br />
+        <MudIconButton Icon="@Icons.Material.Filled.List" Color="Color.Inherit" Edge="Edge.End" /><br />
+        <MudIconButton Icon="@Icons.Material.Outlined.InsertDriveFile" Color="Color.Inherit" Edge="Edge.End" /><br />
+        <MudIconButton Style="margin-top:410%;" Icon="@Icons.Material.Filled.History" Color="Color.Inherit" Edge="Edge.End" /><br />
+        <MudIconButton Icon="@Icons.Material.Outlined.Notifications" Color="Color.Inherit" Edge="Edge.End" /><br />
+        <MudIconButton Icon="fas fa-question" Color="Color.Inherit" Edge="Edge.End" /><br />
+    </MudNavMenu>
+
+    <MudDrawer Style="overflow: visible; position: fixed; padding: 20px; background-color: #F8F8F8; " ClipMode="@DrawerClipMode.Always" Variant="@DrawerVariant.Temporary" Anchor="Anchor.Start" @bind-Open="@open" DisableOverlay="true" Elevation="1">
+        <MudDrawerHeader>
+            <MudText Style="margin-top: -30px; font-size:15px; font-weight:bold; margin-left: -35px;">Spaces</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudItem Style="margin-top:-95px; padding-bottom:20px;" xs="12" sm="12" md="12">
+                <MudTextField @bind-Value="Search" Variant="Variant.Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Inherit" />
+            </MudItem>
+            <MudIcon Style="transform: rotate(30deg);" Size="Size.Small" Icon="@Icons.Material.Filled.PushPin" Title="Pin" />
+            <h6 style="margin-top:-20px; font-weight:bold; margin-left:35px;">Pinned</h6>
+
+            <MudItem Style="background-color: #FFFFFF; border-radius: 4px; width: 60px; padding: 10px; ">
+                <MudAvatar Size="Size.Medium" Style="font-size:15px;" Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+                <MudText Style="font-size: 9px; text-overflow: ellipsis;">@(stringValue ?? "User!")</MudText>
+            </MudItem>
+
+
+
+
+
+
+            <MudItem xs="12" sm="12" md="12">
+                <MudSelect Style="  background-color: #FFFFFF;" T="string" Label="All Spaces" Strict="true" @bind-Value="stringValue" Variant="Variant.Outlined" IconSize="Size.Small" Adornment="Adornment.Start" AdornmentIcon="@Icons.Custom.Uncategorized.FolderOpen" OffsetY="true">
+                    <MudSelectItem Value="@("Shivkumar Nagre")" />
+                    <MudSelectItem Value="@("Bill Gates")">Bill Gates</MudSelectItem>
+                    <MudSelectItem Value="@("Elon Musk")">Elon Musk</MudSelectItem>
+                    <MudSelectItem Value="@("Tony Stark")">Tony Stark</MudSelectItem>
+                    <MudSelectItem Value="@("Sundar Pichai")">Sundar Pichai</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            @*
+            <MudItem xs="12" sm="12" md="12">
+                <MudSelect Label="Select fast-food" @bind-Value="stringValue" HelperText="String" Placeholder="Please Select"
+                           AdornmentIcon="@Icons.Material.Filled.Fastfood" AdornmentColor="Color.Primary">
+                    <MudSelectItem Value="@("Pizza")" Disabled="true">Pizza (Disabled)</MudSelectItem>
+                    <MudSelectItem Value="@("Burger")">Burger</MudSelectItem>
+                    <MudSelectItem Value="@("Hotdog")">Hot Dog</MudSelectItem>
+                    <MudSelectItem Value="@("Shivkumar Nagre")">Shivkumar Nagre</MudSelectItem>
+                    <MudSelectItem Value="@("Elon Musk")">Elon Musk</MudSelectItem>
+                    <MudSelectItem Value="@("Bill Gates")">Bill Gates</MudSelectItem>
+                    <MudSelectItem Value="@("Shourya")">Shourya</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="12">
+                <MudText Class="mb-n3" Typo="Typo.body2">
+                    Selected values:
+                    <MudChip>@(stringValue ?? "Your Space!")</MudChip>
+
+                </MudText>
+            </MudItem>
+            *@
+@*
+            <MudCard Style="margin-top:220px; overflow:hidden;">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText>Create next space</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudIconButton Size="Size.Large" Icon="@Icons.Material.Filled.AddCircle" Color="Color.Primary" />
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText>Pick a template</MudText>
+                    <MudText Typo="Typo.body2">or Create 1:1 Space</MudText>
+                </MudCardContent>
+            </MudCard>
+
+        </MudNavMenu>
+
+
+
+    </MudDrawer>
+    
+
+
+
+    @code {
+
+        bool open = false;
+
+        void ToggleDrawer()
+        {
+            open = !open;
+        }
+
+        public string Search { get; set; }
+        public string stringValue { get; set; }
+    }
+
+*@

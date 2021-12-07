@@ -1,0 +1,93 @@
+﻿
+<MudDialog>
+    <DialogContent>
+        Add people by email addresses
+        
+            <div class="d-flex flex-column" >
+                <MudItem>
+                    <MySpace.Pages.Temp></MySpace.Pages.Temp>
+                    
+                </MudItem>
+                <p>Invite as</p>
+                <MudItem>
+                    <MudSelect T="string" Strict="true" Variant="Variant.Outlined" Format="F2" AnchorOrigin="Origin.BottomCenter" OffsetY="true" Style="margin: -4px 0px ">
+                        <MudSelectItem Value="@("Guest Can chat, Start video call,and comment on tasks & notes.")" />
+                        <MudSelectItem Value="@("Member")" />
+                        <MudSelectItem Value="@("Admin")" />
+                       
+
+
+                    </MudSelect>
+                    
+                </MudItem>
+            </div>
+        
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Create</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog.Cancel();
+    public string TextValue { get; set; }
+
+
+   @* public void Enter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            System.Console.WriteLine(TextValue);
+        }
+    }*@
+
+    public class TodoItem { public string? Title { get; set; } }
+    private List<TodoItem> todos = new();
+    private string InputValue { get; set; }
+    private string err { get; set; }
+
+    public bool IsValidEmail(string email)
+    {
+        if (email.Trim().EndsWith("."))
+        {
+            return false; // suggested by @TK-421
+        }
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public void Enter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            if (IsValidEmail(InputValue))
+            {
+                todos.Add(new TodoItem { Title = InputValue });
+                err = string.Empty;
+                InputValue = string.Empty;
+            }
+            else
+            {
+                err = "Not Valid";
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+

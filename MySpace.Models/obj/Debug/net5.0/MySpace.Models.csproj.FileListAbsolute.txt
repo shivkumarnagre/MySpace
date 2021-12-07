@@ -1,0 +1,45 @@
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.deps.json
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.runtimeconfig.json
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.runtimeconfig.dev.json
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\bin\Debug\net5.0\ref\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.pdb
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfoInputs.cache
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfo.cs
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.CoreCompileInputs.cache
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\ref\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.pdb
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.genruntimeconfig.cache
+C:\Users\Shiv\OneDrive\Desktop\TeachBit\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.AssemblyReference.cache
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.deps.json
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.runtimeconfig.json
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.runtimeconfig.dev.json
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.dll
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\bin\Debug\net5.0\ref\MySpace.Models.dll
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.pdb
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.AssemblyReference.cache
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfoInputs.cache
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfo.cs
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.CoreCompileInputs.cache
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.dll
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\ref\MySpace.Models.dll
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.pdb
+C:\Users\Shaikh Rumn\Desktop\BlazorApp\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.genruntimeconfig.cache
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.deps.json
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.runtimeconfig.json
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.runtimeconfig.dev.json
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\bin\Debug\net5.0\ref\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\bin\Debug\net5.0\MySpace.Models.pdb
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.AssemblyReference.cache
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfoInputs.cache
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.AssemblyInfo.cs
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.csproj.CoreCompileInputs.cache
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\ref\MySpace.Models.dll
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.pdb
+C:\Users\Shiv\OneDrive\Desktop\MySpace\MySpace\MySpace.Models\obj\Debug\net5.0\MySpace.Models.genruntimeconfig.cache
