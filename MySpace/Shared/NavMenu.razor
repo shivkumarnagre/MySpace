@@ -1,0 +1,151 @@
+﻿@inherits MainLayout
+@using MySpace.Models
+
+<MudNavMenu xs="12" sm="12" md="12" Elevation="4" Style=" width: 70px; position: fixed; overflow: hidden; background-color: aqua;  z-index: 1; top: 0; left: 0; bottom:0; ">
+    <MudIconButton Icon="@Icons.Material.Outlined.People" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="@Icons.Material.Outlined.Workspaces" Color="Color.Inherit" Edge="Edge.End" OnClick="@(() => ToggleDrawer())" /><br />
+    <MudIconButton Icon="@Icons.Material.Filled.List" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="@Icons.Material.Outlined.InsertDriveFile" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Style="margin-top:410%;" Icon="@Icons.Material.Filled.History" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="@Icons.Material.Outlined.Notifications" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Icon="fa fa-question" Color="Color.Inherit" Edge="Edge.End" /><br />
+</MudNavMenu>
+
+
+<MudDrawer  Style="overflow: scroll;  position: fixed; scroll-behavior: smooth; padding: 20px; background-color: #F8F8F8; " ClipMode="@DrawerClipMode.Always" Variant="@DrawerVariant.Temporary" Anchor="Anchor.Start" @bind-Open="@open" DisableOverlay="true" Elevation="1">
+    <MudDrawerHeader>
+        <MudText Style="margin-top: -30px; font-size:15px; font-weight:bold; margin-left: -35px;">Spaces</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu>
+        <MudItem Style="margin-top:-95px; padding-bottom:20px;" xs="12" sm="12" md="12">
+            <MudTextField @bind-Value="Search" Variant="Variant.Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Inherit" />
+        </MudItem>
+        <MudIcon Style="transform: rotate(30deg);" Size="Size.Small" Icon="@Icons.Material.Filled.PushPin" Title="Pin" />
+        <h6 style="margin-top:-20px; font-weight:bold; margin-left:35px;">Pinned</h6>
+
+        @if (pinUsers != null && pinUsers.Any())
+        {
+            @foreach (var user in pinUsers)
+            {
+    <div class="d-inline-flex flex-column mb-3">
+        <div class="bg-white d-flex flex-column rounded shadow-sm justify-content-center align-items-center d-inline-block py-1 mx-2">
+            <MudItem   Style="background-color: #FFFFFF; border-radius: 4px; width: 60px; padding: 10px;  ">
+                <MudAvatar Size="Size.Medium" Style="font-size:15px;" Color="Color.Warning" Variant="Variant.Filled">@user[0]</MudAvatar>
+                <MudText Style="font-size: 9px; text-overflow: ellipsis; text-align:center;">@user</MudText>
+            </MudItem>
+        </div>
+        </div>
+        }
+        }
+        else
+        {
+        <div>No users pinned</div>
+        }
+
+
+
+        <MudItem xs="12" sm="12" md="12">
+            <MudSelect Style="  background-color: #FFFFFF;" T="string" Label="All Spaces" Strict="true" @bind-Value="stringValue" Variant="Variant.Outlined" IconSize="Size.Small" Adornment="Adornment.Start" AdornmentIcon="@Icons.Custom.Uncategorized.FolderOpen" OffsetY="true">
+                @foreach (var nme in prsnl)
+                {
+
+                    <MudSelectItem Value="@nme.Fname">@nme.Fname @nme.Lname</MudSelectItem>
+
+
+                }
+
+            </MudSelect>
+        </MudItem>
+
+        @foreach (var nme in prsnl)
+        {
+            <div class="p-2 border-top" @onclick="() => PinnUser(nme.Fname)">
+                <MudAvatar Color="Color.Warning">@nme.Fname.Substring(0, 1)@nme.Lname.Substring(0, 1)</MudAvatar>
+                <MudSelectItem Value="@nme.Fname" Style="margin-left:30px; margin-top:-45px;" Class="lable-a" @onclick="() => PinnUser(nme.Fname)">@nme.Fname @nme.Lname</MudSelectItem>
+                <MudSelectItem Style="margin-left:140px; margin-top:-44px;" Value="@nme.Time" Class="lable-b">@nme.Time</MudSelectItem>
+                <MudSelectItem Style="margin-left:30px; margin-top:-20px;" Value="@nme.Fname" Class="lable-b">@nme.Msg</MudSelectItem>
+            </div>
+
+
+
+        }
+
+
+
+
+
+
+       
+
+
+
+        <MudCard Style="margin-top:auto; overflow:hidden;">
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText>Create next space</MudText>
+                </CardHeaderContent>
+                <CardHeaderActions>
+                    <MudIconButton  @onclick="() => Modal.Open()" Size="Size.Large" Icon="@Icons.Material.Filled.AddCircle" Color="Color.Primary" />
+                </CardHeaderActions>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText>Pick a template</MudText>
+                <MudText Typo="Typo.body2">or Create 1:1 Space</MudText>
+            </MudCardContent>
+        </MudCard>
+
+</MudNavMenu>
+
+
+
+</MudDrawer>
+
+
+<MySpace.Pages.TaskModel @ref="Modal"></MySpace.Pages.TaskModel>
+
+@code {
+
+    bool open;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+
+    public string Search { get; set; }
+    public string stringValue { get; set; }
+    public string val { get; set; }
+
+
+
+
+    MySpaceDbContext db = new MySpaceDbContext();
+
+    List<PrsnlSpace> prsnl = new List<PrsnlSpace>();
+
+
+    protected override void OnInitialized()
+    {
+        prsnl = db.PrsnlSpaces.ToList();
+    }
+
+
+
+
+
+    private MySpace.Pages.TaskModel Modal { get; set; }
+
+
+    public List<string> pinUsers = new List<string>();
+
+
+
+    protected void PinnUser(string value)
+    {
+        pinUsers.Add(value);
+    }
+
+
+};
+
+
