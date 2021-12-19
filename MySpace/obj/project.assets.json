@@ -6053,11 +6053,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shiv\\OneDrive\\Desktop\\BackUp Project\\MySpace_v7_12\\MySpace\\MySpace.csproj",
+      "projectUniqueName": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_master13_12\\MySpace\\MySpace.csproj",
       "projectName": "MySpace",
-      "projectPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\BackUp Project\\MySpace_v7_12\\MySpace\\MySpace.csproj",
+      "projectPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_master13_12\\MySpace\\MySpace.csproj",
       "packagesPath": "C:\\Users\\Shiv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\BackUp Project\\MySpace_v7_12\\MySpace\\obj\\",
+      "outputPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_master13_12\\MySpace\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Shiv\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6074,8 +6074,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Shiv\\OneDrive\\Desktop\\BackUp Project\\MySpace_v7_12\\MySpace.Models\\MySpace.Models.csproj": {
-              "projectPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\BackUp Project\\MySpace_v7_12\\MySpace.Models\\MySpace.Models.csproj"
+            "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_master13_12\\MySpace.Models\\MySpace.Models.csproj": {
+              "projectPath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_master13_12\\MySpace.Models\\MySpace.Models.csproj"
             }
           }
         }
