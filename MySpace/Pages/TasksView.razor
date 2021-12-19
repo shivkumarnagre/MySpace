@@ -1,0 +1,147 @@
+﻿@page "/tasksview"
+@layout SecondaryLayout
+@using MySpace.Models
+
+<style>
+    body {
+        background-color: #F1F1F1;
+       
+    }
+    .bg-bt {
+        background-color: #FDFDFD;
+        margin-left:4px;
+        border-radius:4px;
+        
+    }
+</style>
+
+
+<MudContainer Style=" overflow: visible; height: 30px; display: flex; margin-top:-40px;">
+    <MudText><b>Tasks</b></MudText>
+    <MudAvatar Style="font-size:12px; margin-left:4px;" Size="Size.Small" Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+    <MudText Style="margin-left:4px;">Shivkumar Nagre</MudText>
+    <MudSpacer/><MudSpacer/>
+    <MudButton Class="bg-bt border" EndIcon="@Icons.Material.Outlined.List"  Color="Color.Inherit">Compact</MudButton>
+    <MudButton Class="bg-bt border" EndIcon="@Icons.Material.Outlined.List" Color="Color.Inherit">Expanded</MudButton>
+    <MudButton Class="bg-bt border" EndIcon="@Icons.Material.Outlined.Dashboard" Color="Color.Inherit">Board</MudButton>
+    <MudButton Class="bg-bt border" StartIcon="@Icons.Material.Filled.Lock" Color="Color.Inherit">PRO Settings</MudButton>
+    <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" />
+    <MudIconButton Icon="@Icons.Material.Outlined.Settings" Color="Color.Inherit" />
+    <MudIconButton Icon="@Icons.Material.Outlined.Clear" Color="Color.Inherit" />
+</MudContainer>
+<MudContainer Style=" margin-top:10px;">
+    <MudTextField Style="width: 400px; background-color: #FDFDFD; margin-top: -10px; height: 30px; " xs="12" sm="6" md="4" Class="d-inline-block p-2 bd-highlight  " @bind-Value="@normalText"
+                  Variant="Variant.Outlined"
+                  Adornment="Adornment.End"
+                  AdornmentColor="Color.Inherit"
+                  AdornmentIcon="@Icons.Outlined.Search" />
+    <MudButton Class="border bg-bt" StartIcon="@Icons.Material.Outlined.Person" Color="Color.Inherit">Assigned to me</MudButton>
+    <MudButton Class="border bg-bt" StartIcon="@Icons.Material.Outlined.FilterAlt" Color="Color.Inherit">Filters</MudButton>
+    <MudButton Class="bg-bt border" StartIcon="@Icons.Material.Outlined.Bolt" Color="Color.Inherit">Sprint</MudButton>
+    <MudButton Style="float:right;"  StartIcon="@Icons.Material.Outlined.AllInbox"  Color="Color.Primary">Edit Lists</MudButton>
+</MudContainer>
+
+
+<MudContainer style="display:flex; margin-top:20px;  padding:20px;">
+
+
+    <MudCard Style=" background-color:#F1F1F1; height:auto; min-height:600px;" Outlined="true">
+        <MudCardContent>
+            <div style="display:inline-flex;">
+                <MudText Style=" white-space: nowrap;">To Do</MudText>
+                <MudIconButton Style="margin-left: 300px; margin-top: -15px; display: inline-block;" Edge="Edge.End" Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" />
+            </div>
+            <MudDivider DividerType="DividerType.Middle" Class="my-2" />
+            <MudButton DisableElevation="true" Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Add">Add Task</MudButton>
+        </MudCardContent>
+        @foreach (var prsn in prsnl)
+            {
+        <MudCard Elevation="4" Style="margin:30px;" Outlined="true">
+            <MudCardContent Class="text-nowrap">
+                <MudItem Class="d-md-inline-flex" Style="white-space:nowrap;">
+                    <MudText Style="elevation: higher; width: 10px; border-radius: 3px; background-color: #E5E2E1;" Color="Color.Inherit" Typo="Typo.body2"><b>@prsn.Id</b></MudText>&nbsp;
+                    <MudText Typo="Typo.body2">@prsn.Spacename</MudText>
+                </MudItem><br/><br />
+                <div Class="d-md-inline-flex">
+                <MudIcon  Icon="@Icons.Material.Outlined.OutlinedFlag" Title="Flag" />
+                <MudText Typo="Typo.body2">Medium</MudText><br />
+                  </div><MudSpacer/>
+                <MudIconButton Icon="@Icons.Material.Outlined.ChatBubbleOutline" Size="Size.Small" Class="ma-2"></MudIconButton>
+                <div style="display:inline-flex; margin-left:100px;">
+                    <MudAvatar Style="font-size:12px;" Size="Size.Small" Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+                    <MudText Style="margin-left:4px;" Typo="Typo.body2">Shivkumar Nagre</MudText>
+                </div>
+            </MudCardContent>
+        </MudCard>       
+            }
+    </MudCard>
+
+    <MudCard Style="background-color: #F1F1F1; margin-left: 10px; height: auto; min-height: auto;" Outlined="true">
+        <MudCardContent>
+            <div style="display:inline-flex;">
+                <MudText Style="white-space: nowrap; color:orange;">Doing</MudText>
+                <MudIconButton Style="margin-left:300px; margin-top: -15px; display: inline-block;" Edge="Edge.End" Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" />
+            </div>
+            <MudDivider DividerType="DividerType.Middle" Class="my-2" />
+            <MudButton DisableElevation="true" Color="Color.Primary"  StartIcon="@Icons.Material.Outlined.Add">Add Task</MudButton>
+        </MudCardContent>
+        <MudCard Elevation="4" Style="margin:30px;" Outlined="true">
+            <MudCardContent>
+                <MudText Typo="Typo.body2">The quick, brown fox jumps over a lazy dog.</MudText>
+                <MudIconButton Icon="@Icons.Material.Outlined.ChatBubbleOutline" Size="Size.Small" Class="ma-2"></MudIconButton>
+                <div style="display:inline-flex; margin-left:100px;">
+                    <MudAvatar Style="font-size:12px;" Size="Size.Small" Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+                    <MudText Style="margin-left:4px;" Typo="Typo.body2">Shivkumar Nagre</MudText>
+                </div>
+            </MudCardContent>
+        </MudCard>
+    </MudCard>
+
+    <MudCard Style="background-color: #F1F1F1; margin-left: 10px; height: auto; " Outlined="true">
+        <MudCardContent>
+            <div style="display:inline-flex;">
+                <MudText Style="white-space: nowrap; color:forestgreen;">Done</MudText>
+                <MudIconButton Style="margin-left: 300px; margin-top: -15px; display: inline-block;" Edge="Edge.End" Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" />
+            </div>
+            <MudDivider DividerType="DividerType.Middle" Class="my-2"/>
+            <MudButton DisableElevation="true" Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Add">Add Task</MudButton>
+        </MudCardContent>
+        <MudCard Elevation="4" Style="margin:30px;" Outlined="true">
+            <MudCardContent>
+                <MudText Typo="Typo.body2">The quick, brown fox jumps over a lazy dog.</MudText>
+                <MudIconButton Icon="@Icons.Material.Outlined.ChatBubbleOutline" Size="Size.Small" Class="ma-2"></MudIconButton>
+                <div style="display:inline-flex; margin-left:100px;">
+                    <MudAvatar Style="font-size:12px;" Size="Size.Small" Color="Color.Warning" Variant="Variant.Filled">SK</MudAvatar>
+                    <MudText Style="margin-left:4px;" Typo="Typo.body2">Shivkumar Nagre</MudText>
+                </div>
+            </MudCardContent>
+        </MudCard>
+    </MudCard>
+    @*
+    <MudCard Style="background-color:#F1F1F1; margin-left:10px; height:auto; min-height:600px;" Outlined="true">
+
+        <MudButton DisableElevation="true" Style="margin-top:20px;" Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Add">Add Task</MudButton>     
+        
+    </MudCard>
+        *@
+
+
+
+
+</MudContainer>
+
+        @code
+    {
+            string normalText;
+
+            MySpaceDbContext db = new MySpaceDbContext();
+
+            List<PrsnlSpace> prsnl = new List<PrsnlSpace>();
+
+
+            protected override void OnInitialized()
+            {
+                prsnl = db.PrsnlSpaces.ToList();
+            }
+
+        }
