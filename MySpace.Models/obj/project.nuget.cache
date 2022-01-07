@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2MtW8BtFonhEGhLPM7mSDo7GXSAvfWeaVPN4GSAMm4Lp3yJjJH2JKqcPcc0SquroPQWAqN09MWbiVuQbzkazcQ==",
+  "dgSpecHash": "OWvUMrlxJemJ4ayuCXZ/vJt28lZPmJm+oWott4QoLGSLIyKahkXgdM09PlPkfdKbDexrg7ZtCHvCUWlUytqWug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_master13_12\\MySpace.Models\\MySpace.Models.csproj",
+  "projectFilePath": "C:\\Users\\Shiv\\OneDrive\\Desktop\\TeachBit\\MySpace_main_04_01_2022\\MySpace.Models\\MySpace.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Shiv\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Shiv\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.10\\microsoft.aspnetcore.authorization.5.0.10.nupkg.sha512",

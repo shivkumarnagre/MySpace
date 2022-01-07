@@ -3,14 +3,47 @@
 @inject IDialogService DialogService;
 @inject IJSRuntime JsRuntime
 
-<MudNavMenu xs="12" sm="12" md="12" Elevation="4" Style=" width: 70px; position: fixed; overflow: hidden; background-color: aqua;  z-index: 1; top: 0; left: 0; bottom:0; ">
-    <MudIconButton Icon="@Icons.Material.Outlined.People" Color="Color.Inherit" Edge="Edge.End" /><br />
-    <MudIconButton Icon="@Icons.Material.Outlined.Workspaces" Color="Color.Inherit" Edge="Edge.End" OnClick="@(() => ToggleDrawer())" /><br />
-    <MudIconButton Icon="@Icons.Material.Filled.List" Color="Color.Inherit" Edge="Edge.End" /><br />
-    <MudIconButton Icon="@Icons.Material.Outlined.InsertDriveFile" Color="Color.Inherit" Edge="Edge.End" /><br />
-    <MudIconButton Style="margin-top:410%;" Icon="@Icons.Material.Filled.History" Color="Color.Inherit" Edge="Edge.End" /><br />
-    <MudIconButton Icon="@Icons.Material.Outlined.Notifications" Color="Color.Inherit" Edge="Edge.End" /><br />
-    <MudIconButton Icon="fa fa-question" Color="Color.Inherit" Edge="Edge.End" /><br />
+<style>
+    .clr{
+        color:whitesmoke;
+    }
+</style>
+
+<MudAppBar xs="12" sm="12" md="12" Elevation="1" Style="margin-left: 70px; overflow:visible; background-color: #F1F1F1; " Fixed="true">
+    @if (pinUsers != null && pinUsers.Any())
+    {
+        @foreach (var usr in pinUsers)
+        {
+            <MudAvatar Style="margin-top: -8px; overflow:hidden;" Color="Color.Warning" Variant="Variant.Filled">@usr[0]</MudAvatar>
+            @*<h6 style="color:black; margin-left:5px; margin-bottom:24px; ">@(stringValue ?? "Your Space!")</h6>*@
+            <MudText Typo="Typo.body2" Style="color: black; vertical-align: text-top; margin-left: 5px; margin-bottom: 24px;overflow:hidden; ">@usr</MudText>
+        }
+    }
+            <MudFab DisableElevation="true" IconSize="Size.Small" Icon="@Icons.Material.Filled.SupervisorAccount" Style="position: relative;  margin-top: 28px; margin-left:-20px; color: blue; border-right: 2px solid #DBE4E1; font-size: small; height: 17px; border-radius: 0; background-color: #F1F1F1;" />
+            <MudFab DisableElevation="true" Icon="@Icons.Material.Filled.List" Style="color: blue; border-right: 2px solid #DBE4E1; padding: 15px; margin-top: 30px; font-size: small; height: 22px; border-radius: 0; background-color: #F1F1F1; " Label="Tasks" />
+            <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.InsertDriveFile" Style="color: blue; border-right: 2px solid #DBE4E1; padding: 15px; margin-top: 30px; height: 22px; font-size: small; border-radius: 0; background-color: #F1F1F1; " Label="Notes" />
+            <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.FolderOpen" Style="color: blue; padding: 15px; margin-top: 30px; background-color: #F1F1F1; height: 22px; font-size: small; border-radius: 0; " Label="Files" />
+            <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.Search" Style="color: black; background-color: #F1F1F1; margin-left: 30em; " Edge="Edge.End" Label="Search Space" />
+            <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.FilterList" Style="color: black; background-color: #F1F1F1;" Label="Activity" />
+            <MudFab DisableElevation="true" Icon="@Icons.Material.Outlined.Info" Style="color: black; background-color: #F1F1F1;" Label="Details" />
+
+        </MudAppBar>
+
+<MudNavMenu xs="12" sm="12" md="12" Elevation="4" Style=" width: 70px; position: fixed; overflow: hidden; background-color: black;  z-index: 1; top: 0; left: 0; bottom:0; ">
+    @if (pinUsers != null && pinUsers.Any())
+    {
+        @foreach (var usr in pinUsers)
+        { 
+        <MudAvatar Size="Size.Medium" Color="Color.Warning" Class="ma-2" Style="font-size:12px;" Variant="Variant.Filled">@usr</MudAvatar>
+        }
+    }
+    <MudIconButton Class="clr" Icon="@Icons.Material.Outlined.Workspaces" Color="Color.Inherit" Edge="Edge.End" OnClick="@(() => ToggleDrawer())" /><br />
+    <MudIconButton Class="clr" Icon="@Icons.Material.Filled.List" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Class="clr" Icon="@Icons.Material.Outlined.InsertDriveFile" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Class="clr" Style="margin-top:409%;" Icon="@Icons.Material.Filled.History" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Class="clr" Icon="@Icons.Material.Outlined.Notifications" Color="Color.Inherit" Edge="Edge.End" /><br />
+    <MudIconButton Class="clr" Icon="fa fa-question" Color="Color.Inherit" Edge="Edge.End" /><br />
+    
 </MudNavMenu>
 
 
@@ -32,8 +65,8 @@
                 <div class="d-inline-flex flex-column mb-3">
                     <div class="bg-white d-flex flex-column rounded shadow-sm justify-content-center align-items-center d-inline-block py-1 mx-2">
                         <MudItem Style="background-color: #FFFFFF; border-radius: 4px; width: 60px; padding: 10px;  ">
-                            <MudAvatar Size="Size.Medium" Style="font-size:15px;" Color="Color.Warning" Variant="Variant.Filled" @onclick="() => addUnPinnUser(user)">@user[0]</MudAvatar>
-                            <MudText Style="font-size: 9px; text-overflow: ellipsis; text-align:center;">@user</MudText>
+                            <MudAvatar  Size="Size.Medium"  Style="font-size:15px;" Color="Color.Warning" Variant="Variant.Filled" @onclick="() => addUnPinnUser(user)">@user[0]</MudAvatar>
+                            <MudText   Style="font-size: 9px; text-overflow: ellipsis; text-align:center;">@user</MudText>
                         </MudItem>
                     </div>
                 </div>
@@ -51,7 +84,7 @@
                 @foreach (var nme in prsnl)
                 {
 
-                    <MudSelectItem Value="@nme.Fname">@nme.Fname @nme.Lname</MudSelectItem>
+                    <MudSelectItem  Value="@nme.Fname">@nme.Fname @nme.Lname</MudSelectItem>
 
 
                 }
@@ -116,7 +149,7 @@
 
     public string Search { get; set; }
     public string stringValue { get; set; }
-    public string val { get; set; }
+    public string usrname { get; set; }
 
 
 
